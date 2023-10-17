@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
     enableTracing: false,
-    appName: 'Est Computer\'s human resources management system',
+    appName: 'Evdrive',
     appVersion: '1.0',
-    apiUrl: 'http://localhost:8080/api',
+    apiUrl: '',
 };

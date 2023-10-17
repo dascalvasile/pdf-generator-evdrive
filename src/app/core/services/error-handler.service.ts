@@ -1,6 +1,6 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { environment } from '@environments/environment';
 import { LoggerService } from '@core/services/logger.service';
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class ErrorHandlerService extends ErrorHandler {

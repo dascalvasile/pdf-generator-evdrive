@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
-import { DepartmentComponent } from '@features/department/department.component';
-import { DepartmentRoutingModule } from '@features/department/department-routing.module';
-import { DepartmentListComponent } from '@features/department/components/department-list/department-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PdfGeneratorComponent} from "./pdf-generator.component";
+import {RouterOutlet} from "@angular/router";
+import { PdfFormComponent } from './pdf-form/pdf-form.component';
+import {PdfGeneratorRoutingModule} from "./pdf-generator-routing.module";
 
 
 @NgModule({
   declarations: [
-    DepartmentComponent,
-    DepartmentListComponent,
+    PdfGeneratorComponent,
+    PdfFormComponent
 
 
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    DepartmentRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterOutlet,
+    PdfGeneratorRoutingModule,
+    FormsModule,
+
 
   ]
 })
-export class DepartmentModule {
+export class PdfGeneratorModule {
 }

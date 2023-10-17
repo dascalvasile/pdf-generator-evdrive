@@ -1,0 +1,20 @@
+.card {
+  margin: 3px;
+  display: flex;
+}
+.card-form {
+  height: 30vh;
+
+}
+label {
+  padding: 2px;
+}
+.btn{
+  padding: 6px;
+  margin: 12px;
+}
+.card-table {
+  margin: 3px;
+  height: 70vh;
+
+}

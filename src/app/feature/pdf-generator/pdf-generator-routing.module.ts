@@ -2,18 +2,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 
-import { DepartmentComponent } from '@features/department/department.component';
-import { DepartmentListComponent } from '@features/department/components/department-list/department-list.component';
+import {PdfGeneratorComponent} from "./pdf-generator.component";
+import {PdfFormComponent} from "./pdf-form/pdf-form.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: DepartmentComponent,
+    component: PdfGeneratorComponent,
     children: [
       {
         path: '',
-        component: DepartmentListComponent
-      },
+        component: PdfFormComponent
+      }
+
     ]
   }
 ];
@@ -22,5 +23,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DepartmentRoutingModule {
+export class PdfGeneratorRoutingModule {
 }

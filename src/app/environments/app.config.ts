@@ -1,3 +1,3 @@
 export const AppConfig = {
-    defaultItemsPerPage: 100,
+    defaultItemsPerPage: 10,
 };

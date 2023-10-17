@@ -1,0 +1,18 @@
+.content {
+  background: #ffffff;
+  padding: 24px;
+  flex-grow: 1;
+  height: 86vh;
+  overflow: auto;
+
+}
+
+.content::-webkit-scrollbar {
+  width: 0.4rem;
+  background-color: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}

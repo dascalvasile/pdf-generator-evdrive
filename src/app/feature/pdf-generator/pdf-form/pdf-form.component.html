@@ -1,0 +1,74 @@
+<div>
+  <div class="row justify-content-center align-items-center">
+    <div class="card card-form">
+      <div class="card-body">
+        <form (ngSubmit)="addProduct($event)">
+          <div class="form-row row">
+            <div class="form-group col-md-4">
+              <label for="brand">Brand</label>
+              <input type="text" class="form-control" id="brand" [(ngModel)]="brand" name="brand" placeholder="Brand"
+                     required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="model">Model</label>
+              <input type="text" class="form-control" id="model" [(ngModel)]="model" name="model" placeholder="Model"
+                     required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="trimLevels">Trim Levels</label>
+              <input type="text" class="form-control" id="trimLevels" [(ngModel)]="trimLevels" name="trimLevels"
+                     placeholder="Trim levels" required>
+            </div>
+          </div>
+
+          <div class="form-row row">
+            <div class="form-group col-md-4">
+              <label for="price">Price</label>
+              <input type="number" class="form-control" id="price" [(ngModel)]="price" name="price" placeholder="Price"
+                     required>
+            </div>
+            <div class="form-row col-md-4">
+              <label for="image">Images</label>
+              <input type="file" class="form-control" id="image" (change)="onFileChange($event)" name="image" multiple>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Adaugă produs în tabel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center align-items-center">
+  <div class="card card-table ">
+    <div class="card-body">
+      <p>Tabelul de </p>
+      <button (click)="generateOfferPdf()">Generați PDF</button>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Trim Levels</th>
+          <th>Price</th>
+          <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ product.brand }}</td>
+          <td>{{ product.model }}</td>
+          <td>{{ product.trimLevel }}</td>
+          <td>{{ product.price }}</td>
+          <td>
+            <img [src]="getSafeURL(product.imageUrls[0])" alt="Product Image" width="120">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
