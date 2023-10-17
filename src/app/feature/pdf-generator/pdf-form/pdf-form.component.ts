@@ -4,6 +4,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {getOfferDocumentDefinition} from '../utils/pdf-utils';
+import {OwnerInterface} from "../interfaces/owner.interface";
 
 
 @Component({
@@ -12,12 +13,22 @@ import {getOfferDocumentDefinition} from '../utils/pdf-utils';
   styleUrls: ['./pdf-form.component.css']
 })
 export class PdfFormComponent {
+
+
+  public showAlert: boolean = false;
+
+  public msgAtAlert!: string;
   products: ProductInterface[] = [];
   brand: string = '';
   model: string = '';
   trimLevels: string = '';
   price: number = 0;
   images: FileList | null = null;
+
+  owner!: OwnerInterface;
+  date: string = '';
+  name: string = '';
+  phone: string = '';
 
 
   constructor(
@@ -34,7 +45,11 @@ export class PdfFormComponent {
     event.preventDefault();
 
     if (!this.brand || !this.model || !this.trimLevels || isNaN(this.price) || !this.images || this.images.length === 0) {
-      alert('Completați toate câmpurile și încărcați cel puțin o imagine.');
+      this.msgAtAlert = 'Completați toate câmpurile și încărcați cel puțin o imagine.'
+      this.showAlert = true;
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 3000);
       return;
     }
     const imageUrls: string[] = [];
@@ -77,8 +92,34 @@ export class PdfFormComponent {
   }
 
   async generateOfferPdf() {
-    const documentDefinition = await getOfferDocumentDefinition(this.products, "null", "null", "null");
-    pdfMake.createPdf(documentDefinition).open();
+    if (!this.owner) {
+      this.msgAtAlert = 'Clientrul nu este setat.'
+      this.showAlert = true;
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 3000)
+
+    } else {
+      const documentDefinition = await getOfferDocumentDefinition(this.products, this.owner);
+      pdfMake.createPdf(documentDefinition).open();
+    }
+  }
+
+  addOwner($event: any) {
+    if (!this.phone || !this.name || !this.date) {
+      this.msgAtAlert = 'Completați toate câmpurile.'
+      this.showAlert = true;
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 3000)
+      return;
+    }
+    this.owner = {
+      phone: this.phone,
+      name: this.name,
+      date: this.date,
+    };
+
   }
 
 

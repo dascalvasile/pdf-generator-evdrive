@@ -1,48 +1,91 @@
-<div>
-  <div class="row justify-content-center align-items-center">
-    <div class="card card-form">
-      <div class="card-body">
-        <form (ngSubmit)="addProduct($event)">
-          <div class="form-row row">
-            <div class="form-group col-md-4">
-              <label for="brand">Brand</label>
-              <input type="text" class="form-control" id="brand" [(ngModel)]="brand" name="brand" placeholder="Brand"
-                     required>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="model">Model</label>
-              <input type="text" class="form-control" id="model" [(ngModel)]="model" name="model" placeholder="Model"
-                     required>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="trimLevels">Trim Levels</label>
-              <input type="text" class="form-control" id="trimLevels" [(ngModel)]="trimLevels" name="trimLevels"
-                     placeholder="Trim levels" required>
-            </div>
-          </div>
+<div class="container-fluid">
+  <div class="row">
 
-          <div class="form-row row">
-            <div class="form-group col-md-4">
-              <label for="price">Price</label>
-              <input type="number" class="form-control" id="price" [(ngModel)]="price" name="price" placeholder="Price"
-                     required>
+    <!-- First Card -->
+    <div class="col-md-6">
+      <div class="card card-form">
+        <div class="card-body">
+          <form (ngSubmit)="addProduct($event)">
+
+
+            <div class="form-row d-flex justify-content-between">
+              <div class="form-group col-md-6">
+                <label for="brand">Brand</label>
+                <input type="text" class="form-control" id="brand" [(ngModel)]="brand" name="brand" placeholder="Brand"
+                       required>
+              </div>
+              <div class="form-group col-md-5">
+                <label for="model">Model</label>
+                <input type="text" class="form-control" id="model" [(ngModel)]="model" name="model" placeholder="Model"
+                       required>
+              </div>
+
             </div>
-            <div class="form-row col-md-4">
-              <label for="image">Images</label>
-              <input type="file" class="form-control" id="image" (change)="onFileChange($event)" name="image" multiple>
+
+            <div class="form-row d-flex justify-content-between">
+              <div class="form-group col-md-6">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" [(ngModel)]="price" name="price"
+                       placeholder="Price" required>
+              </div>
+              <div class="form-group col-md-5">
+                <label for="image">Images</label>
+                <input type="file" class="form-control" id="image" (change)="onFileChange($event)" name="image"
+                       multiple>
+              </div>
             </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Adaugă produs în tabel</button>
-        </form>
+            <div class="form-row d-flex justify-content-between">
+              <div class="form-group col-md-12">
+                <label for="trimLevels">Trim Levels</label>
+                <input type="text" class="form-control" id="trimLevels" [(ngModel)]="trimLevels" name="trimLevels"
+                       placeholder="Trim levels" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Adaugă produs în tabel</button>
+          </form>
+        </div>
       </div>
     </div>
+
+    <!-- Second Card -->
+    <div class="col-md-6">
+      <div class="card card-form">
+        <div class="card-body">
+          <form (ngSubmit)="addOwner($event)">
+            <div class="form-row d-flex justify-content-between">
+              <div class="form-group col-md-12">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" placeholder="Name"
+                       required>
+              </div>
+            </div>
+            <div class="form-row d-flex justify-content-between">
+              <div class="form-group col-md-6">
+                <label for="date">Date</label>
+                <input type="text" class="form-control" id="date" [(ngModel)]="date" name="date" placeholder="Date"
+                       required>
+              </div>
+              <div class="form-group col-md-5">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" [(ngModel)]="phone" name="phone" placeholder="Phone"
+                       required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-secondary">Adaugă client</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div class="row justify-content-center align-items-center">
+
+<div class="container-fluid">
   <div class="card card-table ">
     <div class="card-body">
-      <p>Tabelul de </p>
+      <h3 *ngIf="owner">Produsele pentru clientul {{owner.name}}</h3>
+      <h3 *ngIf="!owner">Adaugă client</h3>
       <button (click)="generateOfferPdf()">Generați PDF</button>
 
       <table class="table">
@@ -71,4 +114,9 @@
       </table>
     </div>
   </div>
+</div>
+
+<div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show position-fixed top-0 end-0 m-3"
+     role="alert">
+  {{msgAtAlert}}
 </div>

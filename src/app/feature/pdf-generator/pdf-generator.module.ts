@@ -22,6 +22,7 @@ import {PdfGeneratorRoutingModule} from "./pdf-generator-routing.module";
     FormsModule,
 
 
+
   ]
 })
 export class PdfGeneratorModule {

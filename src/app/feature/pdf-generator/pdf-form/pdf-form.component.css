@@ -1,9 +1,9 @@
 .card {
   margin: 3px;
-  display: flex;
+
 }
 .card-form {
-  height: 30vh;
+  height: 40vh;
 
 }
 label {
@@ -15,6 +15,9 @@ label {
 }
 .card-table {
   margin: 3px;
-  height: 70vh;
+  height: 60vh;
 
+}
+h3 {
+  color: red;
 }
