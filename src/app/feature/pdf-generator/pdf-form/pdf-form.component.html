@@ -84,7 +84,7 @@
 <div class="container-fluid">
   <div class="card card-table ">
     <div class="card-body">
-      <h3 *ngIf="owner">Produsele pentru clientul {{owner.name}}</h3>
+      <h3 *ngIf="owner">Produsele pentru clientul {{ owner.name }}</h3>
       <h3 *ngIf="!owner">Adaugă client</h3>
       <button (click)="generateOfferPdf()">Generați PDF</button>
 
@@ -118,5 +118,5 @@
 
 <div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show position-fixed top-0 end-0 m-3"
      role="alert">
-  {{msgAtAlert}}
+  {{ msgAtAlert }}
 </div>
